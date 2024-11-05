@@ -1,24 +1,24 @@
 import EventCard from "@/components/EventCard";
 import NavBar from "@/components/NavBar";
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Icon, Searchbar } from "react-native-paper";
 
 const data = [
   {
     name: "secomp 2023",
     date: "10/10/2023",
-    image: "@/assets/images/john.jpg",
+    image: require("../assets/images/john.jpg"),
   },
   {
     name: "meninas digitais",
     date: "01/04/2022",
-    image: "@/assets/images/gabe_newel_meme.jpg",
+    image: require("../assets/images/gabe_newell_meme.jpg"),
   },
   {
     name: "ubuntu 2022",
     date: "05/06/2022",
-    image: "@/assets/images/uganda-knuckles.webp",
+    image: require("../assets/images/uganda-knuckes.png"),
   },
 ];
 
@@ -26,7 +26,7 @@ const Home = () => {
   const [text, setText] = React.useState("");
 
   return (
-    <View>
+    <View style={styles.mainContainer}>
       <NavBar title="Home" iconName="home" onPress={() => {}} />
       <View style={styles.container}>
         {/* <Icon source="text-search" size={30} /> */}
@@ -40,6 +40,7 @@ const Home = () => {
       <View style={styles.carrousel}>
         {data.map((item) => (
           <EventCard
+            style={{ padding: 100 }}
             key={item.name}
             title={item.name}
             date={item.date}
@@ -47,11 +48,20 @@ const Home = () => {
           />
         ))}
       </View>
+      <View style={[styles.container]}>
+        <TouchableOpacity style={styles.btnStyle} onPress={() => {}}>
+          <Text style={styles.btnText}>Nova Pesquisa</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{ flex: 1, backgroundColor: "#372775" }}></View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 2,
+  },
   container: {
     display: "flex",
     // marginTop: 10,
@@ -63,17 +73,41 @@ const styles = StyleSheet.create({
   searchbarContainer: {
     backgroundColor: "#fff",
     borderRadius: 0,
-    color: "#ae3",
+    // color: "#ae3",
     width: "80%",
     marginTop: 10,
   },
   carrousel: {
     display: "flex",
     paddingVertical: 20,
+    paddingHorizontal: 100,
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
+    gap: 20,
     flexDirection: "row",
     backgroundColor: "#372775",
+  },
+  btnStyle: {
+    backgroundColor: "#37BD6D",
+    borderRadius: 0,
+    width: "80%",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 8,
+    // todo: shadow on btn element
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 5,
+      height: 5,
+    },
+
+    // shadowOpacity: 0.25,
+    shadowRadius: 3,
+  },
+  btnText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
 
