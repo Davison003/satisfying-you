@@ -1,24 +1,45 @@
 import EventCard from "@/components/EventCard";
 import NavBar from "@/components/NavBar";
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { Icon, Searchbar } from "react-native-paper";
 
 const data = [
   {
     name: "secomp 2023",
     date: "10/10/2023",
-    image: require("../assets/images/john.jpg"),
+    image: require("@/assets/images/john.jpg"),
   },
   {
     name: "meninas digitais",
     date: "01/04/2022",
-    image: require("../assets/images/gabe_newell_meme.jpg"),
+    image: require("@/assets/images/gabe_newell_meme.jpg"),
   },
   {
     name: "ubuntu 2022",
     date: "05/06/2022",
-    image: require("../assets/images/uganda-knuckes.png"),
+    image: require("@/assets/images/uganda-knuckes.png"),
+  },
+  {
+    name: "secomp 2024",
+    date: "10/10/2023",
+    image: require("@/assets/images/john.jpg"),
+  },
+  {
+    name: "meninas super digitais",
+    date: "01/04/2022",
+    image: require("@/assets/images/gabe_newell_meme.jpg"),
+  },
+  {
+    name: "ubuntu 2023",
+    date: "05/06/2022",
+    image: require("@/assets/images/uganda-knuckes.png"),
   },
 ];
 
@@ -37,7 +58,7 @@ const Home = () => {
           value={text}
         />
       </View>
-      <View style={styles.carrousel}>
+      <ScrollView contentContainerStyle={styles.carrousel} horizontal={true}>
         {data.map((item) => (
           <EventCard
             style={{ padding: 100 }}
@@ -47,8 +68,8 @@ const Home = () => {
             image={item.image}
           />
         ))}
-      </View>
-      <View style={[styles.container]}>
+      </ScrollView>
+      <View style={styles.container}>
         <TouchableOpacity style={styles.btnStyle} onPress={() => {}}>
           <Text style={styles.btnText}>Nova Pesquisa</Text>
         </TouchableOpacity>
@@ -60,13 +81,15 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 2,
+    flex: 1,
   },
   container: {
+    flex: 1,
     display: "flex",
-    // marginTop: 10,
+    paddingTop: 20,
+    // marginBottom: -20,
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "center",
     backgroundColor: "#372775",
   },
 
@@ -80,9 +103,9 @@ const styles = StyleSheet.create({
   carrousel: {
     display: "flex",
     paddingVertical: 20,
-    paddingHorizontal: 100,
-    alignItems: "center",
-    justifyContent: "center",
+    paddingHorizontal: 20,
+    // alignItems: "center",
+    // justifyContent: "center",
     gap: 20,
     flexDirection: "row",
     backgroundColor: "#372775",
@@ -97,12 +120,9 @@ const styles = StyleSheet.create({
     // todo: shadow on btn element
     shadowColor: "#000",
     shadowOffset: {
-      width: 5,
+      width: 0,
       height: 5,
     },
-
-    // shadowOpacity: 0.25,
-    shadowRadius: 3,
   },
   btnText: {
     color: "#fff",
