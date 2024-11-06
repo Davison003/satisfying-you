@@ -1,7 +1,7 @@
 import { StyleSheet, Image, TouchableOpacity, Text } from "react-native";
 
-const cardSize = [120, 185];
-const imgSize = [100, 100];
+const cardSize = [250, 250];
+const imgSize = [120, 120];
 
 export default function Card(info: any) {
   // const img = require(`../assets/images/${info.image}`);
@@ -30,13 +30,13 @@ const styles = StyleSheet.create({
 
   title: {
     color: "#48a",
-    fontSize: 18,
+    fontSize: 24,
     textAlign: "center",
     fontFamily: "sans-serif",
     textTransform: "uppercase",
   },
   date: {
-    fontSize: 12,
+    fontSize: 16,
     opacity: 0.5,
     textAlign: "center",
     fontWeight: "bold",
