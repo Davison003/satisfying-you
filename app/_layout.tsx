@@ -1,21 +1,22 @@
+import "react-native-gesture-handler";
 import { Stack } from "expo-router";
-import Home from "./(tabs)/Home";
 
 export default function RootLayout() {
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="(tabs)/Home" />
+    <Stack
+      screenOptions={{
+        headerStyle: { backgroundColor: "#2b1d62" },
+        headerTintColor: "#fff",
+      }}
+    >
+      <Stack.Screen name="index" options={{ title: "Satisfying You" }} />
+      <Stack.Screen
+        name="(drawer)"
+        options={{
+          headerStyle: { backgroundColor: "#2b1d62" },
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 }
-
-// export default function RootLayout() {
-//   return (
-//     <Stack screenOptions={{ headerShown: false }}>
-//       <Stack.Screen
-//         name="../views/Home"
-//         options={{ title: "Satisfying You" }}
-//       />
-//     </Stack>
-//   );
-// }
