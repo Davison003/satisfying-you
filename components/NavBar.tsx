@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { Text, View, StyleSheet } from "react-native";
 import { Appbar, Button, Icon } from "react-native-paper";
 
@@ -15,7 +16,10 @@ export default function NavBar(props: any) {
       {props.title !== "Home" ? (
         <Appbar.BackAction onPress={_goBack} />
       ) : (
-        <Appbar.Action icon={"dots-horizontal"} onPress={props.onPress} />
+        <Appbar.Action
+          icon={"dots-horizontal"}
+          onPress={() => router.push(props.path)}
+        />
       )}
       <Appbar.Content title={props.title} />
     </Appbar.Header>
