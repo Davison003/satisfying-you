@@ -1,5 +1,6 @@
 import EventCard from "@/components/EventCard";
 import NavBar from "@/components/NavBar";
+import { useRouter } from "expo-router";
 import React from "react";
 import {
   View,
@@ -8,7 +9,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import { Icon, Searchbar } from "react-native-paper";
+import { Searchbar } from "react-native-paper";
 
 const data = [
   {
@@ -45,10 +46,15 @@ const data = [
 
 const Home = () => {
   const [text, setText] = React.useState("");
-
+  const router = useRouter();
   return (
     <View style={styles.mainContainer}>
-      <NavBar title="Home" iconName="home" onPress={() => {}} />
+      {/* <NavBar
+        title="Home"
+        iconName="home"
+        // action={router.push}
+        path="./(drawer)/Drawer"
+      /> */}
       <View style={styles.container}>
         {/* <Icon source="text-search" size={30} /> */}
         <Searchbar
