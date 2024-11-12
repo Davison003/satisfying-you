@@ -10,6 +10,8 @@ export default function RootLayout() {
       }}
     >
       <Stack.Screen name="index" options={{ title: "Satisfying You" }} />
+      <Stack.Screen name="Pesquisa" options={{ headerShown: false }} />
+      <Stack.Screen name="Agradecimentos" options={{ headerShown: false }} />
       <Stack.Screen
         name="(drawer)"
         options={{
