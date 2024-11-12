@@ -1,15 +1,9 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  Pressable,
-  Button,
-} from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { Link, useRouter } from "expo-router";
 
 export default function Index() {
+  const thanksRoute = "/Agradecimentos";
+  const emotionImgSize = [75, 75];
   const router = useRouter();
 
   return (
@@ -27,50 +21,50 @@ export default function Index() {
       </View>
 
       <View style={estilos.botoes}>
-        <Link href="/Agradecimentos" asChild>
+        <Link href={thanksRoute} asChild>
           <TouchableOpacity style={estilos.escolha}>
             <Image
-              style={{ height: 75, width: 75 }}
+              style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
               source={require("@/assets/images/pessimo.png")}
             />
             <Text style={estilos.feedback}>Péssimo</Text>
           </TouchableOpacity>
         </Link>
 
-        <Link href="/Agradecimentos" asChild>
+        <Link href={thanksRoute} asChild>
           <TouchableOpacity style={estilos.escolha}>
             <Image
-              style={{ height: 75, width: 75 }}
+              style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
               source={require("@/assets/images/ruim.png")}
             />
             <Text style={estilos.feedback}>Ruim</Text>
           </TouchableOpacity>
         </Link>
 
-        <Link href="/Agradecimentos" asChild>
+        <Link href={thanksRoute} asChild>
           <TouchableOpacity style={estilos.escolha}>
             <Image
-              style={{ height: 75, width: 75 }}
+              style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
               source={require("@/assets/images/neutro.png")}
             />
             <Text style={estilos.feedback}>Neutro</Text>
           </TouchableOpacity>
         </Link>
 
-        <Link href="/Agradecimentos" asChild>
+        <Link href={thanksRoute} asChild>
           <TouchableOpacity style={estilos.escolha}>
             <Image
-              style={{ height: 75, width: 75 }}
+              style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
               source={require("@/assets/images/bom.png")}
             />
             <Text style={estilos.feedback}>Bom</Text>
           </TouchableOpacity>
         </Link>
 
-        <Link href="/Agradecimentos" asChild>
+        <Link href={thanksRoute} asChild>
           <TouchableOpacity style={estilos.escolha}>
             <Image
-              style={{ height: 75, width: 75 }}
+              style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
               source={require("@/assets/images/excelente.png")}
             />
             <Text style={estilos.feedback}>Excelente</Text>
