@@ -13,6 +13,11 @@ const LoginPage = () => {
           <Text style={{ backgroundColor: "#aed" }}> pesquisa</Text>
         </TouchableOpacity>
       </Link>
+      <Link href="/Relatorio" asChild>
+        <TouchableOpacity>
+          <Text style={{ backgroundColor: "#f66" }}> relatorio</Text>
+        </TouchableOpacity>
+      </Link>
       <Link href="/LoginScreen" asChild>
         <TouchableOpacity>
           <Text style={{ backgroundColor: "#e4f" }}> login </Text>

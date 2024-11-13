@@ -19,6 +19,13 @@ export default function RootLayout() {
       />
       <Stack.Screen name="Pesquisa" options={{ headerShown: false }} />
       <Stack.Screen name="Agradecimentos" options={{ headerShown: false }} />
+      <Stack.Screen 
+        name="relatorio" 
+        options={{
+          title: "Relatório", 
+          headerStyle: { backgroundColor: "#2b1d62" },
+        }}
+      />
       <Stack.Screen
         name="(drawer)"
         options={{
