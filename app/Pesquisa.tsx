@@ -25,29 +25,9 @@ export default function Index() {
           <TouchableOpacity style={estilos.escolha}>
             <Image
               style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
-              source={require("@/assets/images/pessimo.png")}
+              source={require("@/assets/images/excelente.png")}
             />
-            <Text style={estilos.feedback}>Péssimo</Text>
-          </TouchableOpacity>
-        </Link>
-
-        <Link href={thanksRoute} asChild>
-          <TouchableOpacity style={estilos.escolha}>
-            <Image
-              style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
-              source={require("@/assets/images/ruim.png")}
-            />
-            <Text style={estilos.feedback}>Ruim</Text>
-          </TouchableOpacity>
-        </Link>
-
-        <Link href={thanksRoute} asChild>
-          <TouchableOpacity style={estilos.escolha}>
-            <Image
-              style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
-              source={require("@/assets/images/neutro.png")}
-            />
-            <Text style={estilos.feedback}>Neutro</Text>
+            <Text style={estilos.feedback}>Excelente</Text>
           </TouchableOpacity>
         </Link>
 
@@ -65,11 +45,32 @@ export default function Index() {
           <TouchableOpacity style={estilos.escolha}>
             <Image
               style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
-              source={require("@/assets/images/excelente.png")}
+              source={require("@/assets/images/neutro.png")}
             />
-            <Text style={estilos.feedback}>Excelente</Text>
+            <Text style={estilos.feedback}>Neutro</Text>
           </TouchableOpacity>
         </Link>
+
+        <Link href={thanksRoute} asChild>
+          <TouchableOpacity style={estilos.escolha}>
+            <Image
+              style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
+              source={require("@/assets/images/ruim.png")}
+            />
+            <Text style={estilos.feedback}>Ruim</Text>
+          </TouchableOpacity>
+        </Link>
+
+        <Link href={thanksRoute} asChild>
+          <TouchableOpacity style={estilos.escolha}>
+            <Image
+              style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
+              source={require("@/assets/images/pessimo.png")}
+            />
+            <Text style={estilos.feedback}>Péssimo</Text>
+          </TouchableOpacity>
+        </Link>
+        
       </View>
     </View>
   );
