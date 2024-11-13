@@ -13,6 +13,16 @@ const LoginPage = () => {
           <Text style={{ backgroundColor: "#aed" }}> pesquisa</Text>
         </TouchableOpacity>
       </Link>
+      <Link href="/LoginScreen" asChild>
+        <TouchableOpacity>
+          <Text style={{ backgroundColor: "#e4f" }}> login </Text>
+        </TouchableOpacity>
+      </Link>
+      <Link href="/RegisterScreen" asChild>
+        <TouchableOpacity>
+          <Text style={{ backgroundColor: "#ab0" }}> new account </Text>
+        </TouchableOpacity>
+      </Link>
       <TouchableOpacity onPress={() => router.replace("./(drawer)/Home")}>
         <Text style={{ backgroundColor: "#ead" }}>toca auqi</Text>
       </TouchableOpacity>
