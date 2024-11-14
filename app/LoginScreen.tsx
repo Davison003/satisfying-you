@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import * as Font from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-
-// Prevenir que a tela de splash seja ocultada automaticamente
-SplashScreen.preventAutoHideAsync();
 
 const loadFonts = async () => {
   await Font.loadAsync({
-    'Averia Libre': require('../assets/fonts/AveriaLibre-Regular.ttf'), // Verifique o caminho da fonte
+    'Averia Libre': require('./assets/fonts/AveriaLibre-Regular.ttf'),
   });
 };
 
@@ -19,15 +15,8 @@ const App = () => {
   const [mensagemErro, setMensagemErro] = useState('');
 
   useEffect(() => {
-    loadFonts().then(() => {
-      setFontLoaded(true);
-      SplashScreen.hideAsync();  // Ocultar a tela de splash depois que as fontes carregarem
-    });
+    loadFonts().then(() => setFontLoaded(true));  // Carregar fontes ao iniciar o aplicativo
   }, []);
-
-  if (!fontLoaded) {
-    return null; // Retorna null até que as fontes sejam carregadas e a tela de splash seja ocultada
-  }
 
   // Função de verificação de e-mail e senha
   const verificarCampos = () => {
@@ -38,6 +27,14 @@ const App = () => {
       setMensagemErro('');
     }
   };
+
+  if (!fontLoaded) {
+    return (
+      <View style={styles.container}>
+        <Text>Carregando fontes...</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
