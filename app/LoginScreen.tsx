@@ -1,141 +1,137 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import * as Font from 'expo-font';
+// Importação
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+import { useState } from "react";
+import { useRouter } from "expo-router";
 
-const loadFonts = async () => {
-  await Font.loadAsync({
-    'Averia Libre': require('./assets/fonts/AveriaLibre-Regular.ttf'),
-  });
-};
-
+// Definição do App
 const App = () => {
-  const [fontLoaded, setFontLoaded] = useState(false);
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [mensagemErro, setMensagemErro] = useState('');
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [mensagemErro, setMensagemErro] = useState("");
 
-  useEffect(() => {
-    loadFonts().then(() => setFontLoaded(true));  // Carregar fontes ao iniciar o aplicativo
-  }, []);
-
-  // Função de verificação de e-mail e senha
-  const verificarCampos = () => {
-    const emailValido = email.includes('@') && email.endsWith('.com');
-    if (!emailValido) {
-      setMensagemErro('E-mail e/ou senha inválidos.');
+  const router = useRouter();
+  const login = () => {
+    // Validação simples de email e senha
+    if (!email.includes("@") || !email.endsWith(".com")) {
+      // alert("Login realizado com sucesso!");
+      router.navigate("./(drawer)/Home");
+      setMensagemErro("");
     } else {
-      setMensagemErro('');
+      setMensagemErro("E-mail e/ou senha inválidos.");
     }
   };
 
-  if (!fontLoaded) {
-    return (
-      <View style={styles.container}>
-        <Text>Carregando fontes...</Text>
-      </View>
-    );
-  }
+  const limpar = () => {
+    setEmail("");
+    setSenha("");
+    setMensagemErro("");
+  };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.titulo}>Satisfying.you 😊</Text>
+    <View style={estilos.view}>
+      <Text style={estilos.titulo}>Satisfying.you 😊</Text>
 
-      <Text style={styles.label}>E-mail</Text>
+      {mensagemErro ? (
+        <Text style={estilos.mensagemErro}>{mensagemErro}</Text>
+      ) : null}
+
+      <Text style={estilos.label}>E-mail:</Text>
       <TextInput
-        style={styles.input}
-        placeholder="Digite seu e-mail"
+        style={estilos.textInput}
         value={email}
-        onChangeText={setEmail}
+        onChangeText={() => {
+          setEmail(email);
+          setMensagemErro("");
+        }}
+        keyboardType="email-address"
+        placeholder="Digite seu e-mail"
       />
 
-      <Text style={styles.label}>Senha</Text>
+      <Text style={estilos.label}>Senha:</Text>
       <TextInput
-        style={styles.input}
-        placeholder="Digite sua senha"
-        secureTextEntry
+        style={estilos.textInput}
         value={senha}
-        onChangeText={setSenha}
+        onChangeText={() => {
+          setEmail(email);
+          setMensagemErro("");
+        }}
+        secureTextEntry
+        placeholder="Digite sua senha"
       />
 
-      {mensagemErro ? <Text style={styles.mensagemErro}>{mensagemErro}</Text> : null}
+      <View style={estilos.botoes}>
+        <TouchableOpacity style={estilos.botao} onPress={login}>
+          <Text style={estilos.textoBotao}>Entrar</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.botaoEntrar} onPress={verificarCampos}>
-        <Text style={styles.textoBotao}>Entrar</Text>
-      </TouchableOpacity>
-
-      <View style={styles.espacamentoEntreBotoes} />
-
-      <TouchableOpacity style={styles.botaoCriarConta}>
-        <Text style={styles.textoBotao}>Criar minha conta</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.botaoEsqueciSenha}>
-        <Text style={styles.textoBotao}>Esqueci minha senha</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={estilos.botao} onPress={limpar}>
+          <Text style={estilos.textoBotao}>Limpar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
+// Estilos
+const estilos = StyleSheet.create({
+  view: {
     flex: 1,
-    backgroundColor: '#3C1874',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
-    justifyContent: 'center',
+    backgroundColor: "#3b2a84",
   },
   titulo: {
     fontSize: 24,
-    fontFamily: 'Averia Libre', // Usa a fonte personalizada
-    color: '#FFFFFF',
-    textAlign: 'center',
-    marginBottom: 30,
+    color: "#FFF",
+    marginBottom: 20,
   },
   label: {
     fontSize: 18,
-    fontFamily: 'Averia Libre', // Usa a fonte personalizada
-    color: '#FFFFFF',
+    color: "#FFF",
+    alignSelf: "flex-start",
+    marginLeft: 20,
     marginBottom: 5,
   },
-  input: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 0, // Remove a borda arredondada
+  textInput: {
+    width: "90%",
     padding: 10,
+    fontSize: 16,
+    borderWidth: 1,
+    borderColor: "gray",
+    backgroundColor: "#FFF",
     marginBottom: 15,
+    borderRadius: 5,
   },
   mensagemErro: {
-    color: '#FF0000',
-    fontFamily: 'Averia Libre', // Usa a fonte personalizada
+    color: "#FF6666",
+    fontSize: 14,
     marginBottom: 10,
   },
-  botaoEntrar: {
-    backgroundColor: '#28A745',
-    padding: 15,
-    borderRadius: 0, // Remove a borda arredondada
-    alignItems: 'center',
-    marginBottom: 20,
+  botoes: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "90%",
+    marginTop: 20,
   },
-  espacamentoEntreBotoes: {
-    height: 30,
-  },
-  botaoCriarConta: {
-    backgroundColor: '#17A2B8',
+  botao: {
+    backgroundColor: "#4CAF50",
     padding: 10,
-    borderRadius: 0, // Remove a borda arredondada
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  botaoEsqueciSenha: {
-    backgroundColor: '#6C757D',
-    padding: 10,
-    borderRadius: 0, // Remove a borda arredondada
-    alignItems: 'center',
+    borderRadius: 5,
+    width: "45%",
+    alignItems: "center",
   },
   textoBotao: {
-    fontFamily: 'Averia Libre', // Usa a fonte personalizada
+    color: "#FFF",
     fontSize: 16,
-    color: '#FFFFFF',
   },
 });
 
+// Exportação
 export default App;
-
