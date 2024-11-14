@@ -1,35 +1,22 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
-import React, { useState, useEffect } from "react";
+// Importação
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+import { useState } from "react";
 import { useRouter } from "expo-router";
-import * as Font from "expo-font";
-import * as SplashScreen from 'expo-splash-screen';
 
-// Função para carregar as fontes personalizadas
-const loadFonts = async () => {
-  await Font.loadAsync({
-    'AveriaLibre-Regular': require('../assets/fonts/AveriaLibre-Regular.ttf'),
-  });
-};
-
+// Definição
 const NewAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [fontLoaded, setFontLoaded] = useState(false);
 
   const router = useRouter();
-
-  // Função para carregar as fontes e ocultar a splash screen
-  useEffect(() => {
-    const prepare = async () => {
-      await loadFonts(); // Carregar as fontes
-      setFontLoaded(true); // Atualizar o estado para indicar que a fonte foi carregada
-      SplashScreen.hideAsync(); // Esconde a splash screen após carregar a fonte
-    };
-
-    prepare();
-  }, []);
 
   const handleCadastro = () => {
     // Verificação de e-mail simples
@@ -40,29 +27,26 @@ const NewAccount = () => {
 
     // Verificação de senhas
     if (password !== repeatPassword) {
-      setMessage("O campo 'Repetir senha' difere da senha.");
+      setMessage("O campo repetir senha difere da senha.");
       return;
     }
 
     // Verifica se todos os campos estão preenchidos
     if (email && password && repeatPassword) {
-      // Redirecionar para a tela de Login
-      router.push("/LoginScreen");
+      // setMessage("Conta criada com sucesso!");
+      router.navigate("./LoginScreen");
     } else {
       setMessage("Por favor, preencha todos os campos.");
     }
   };
 
-  if (!fontLoaded) {
-    return (
-      <View style={estilos.container}>
-        <Text style={estilos.texto}>Carregando fontes...</Text>
-      </View>
-    );
-  }
-
   return (
     <View style={estilos.container}>
+      {/* <View style={estilos.header}>
+        <Ionicons name="arrow-back" size={24} color="#FFFFFF" />
+        <Text style={estilos.titulo}>Nova Conta</Text>
+      </View> */}
+
       <View style={estilos.form}>
         <Text style={estilos.label}>E-mail</Text>
         <TextInput
@@ -93,7 +77,10 @@ const NewAccount = () => {
 
         {message ? <Text style={estilos.mensagemErro}>{message}</Text> : null}
 
-        <TouchableOpacity style={estilos.botaoCadastrar} onPress={handleCadastro}>
+        <TouchableOpacity
+          style={estilos.botaoCadastrar}
+          onPress={handleCadastro}
+        >
           <Text style={estilos.textoBotao}>CADASTRAR</Text>
         </TouchableOpacity>
       </View>
@@ -107,6 +94,16 @@ const estilos = StyleSheet.create({
     backgroundColor: "#3e2c78",
     padding: 20,
   },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  titulo: {
+    color: "#FFFFFF",
+    fontSize: 24,
+    marginLeft: 10,
+  },
   form: {
     backgroundColor: "#3e2c78",
     padding: 20,
@@ -116,7 +113,6 @@ const estilos = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 16,
     marginBottom: 5,
-    fontFamily: 'AveriaLibre-Regular', // Aplica a fonte personalizada com o nome correto
   },
   input: {
     backgroundColor: "#FFFFFF",
@@ -127,7 +123,6 @@ const estilos = StyleSheet.create({
   mensagemErro: {
     color: "#FF6347",
     marginBottom: 10,
-    fontFamily: 'AveriaLibre-Regular', // Aplica a fonte personalizada com o nome correto
   },
   botaoCadastrar: {
     backgroundColor: "#28a745", // Verde para o botão "Cadastrar"
@@ -138,11 +133,8 @@ const estilos = StyleSheet.create({
   textoBotao: {
     color: "#FFFFFF",
     fontSize: 18,
-    fontFamily: 'AveriaLibre-Regular', // Aplica a fonte personalizada com o nome correto
-  },
-  texto: {
-    fontFamily: 'AveriaLibre-Regular', // Aplica a fonte personalizada com o nome correto
   },
 });
 
+// Exportação
 export default NewAccount;

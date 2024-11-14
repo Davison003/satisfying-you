@@ -7,14 +7,9 @@ import * as SplashScreen from 'expo-splash-screen';
 SplashScreen.preventAutoHideAsync();
 
 const loadFonts = async () => {
-  try {
-    // Carregar a fonte personalizada
-    await Font.loadAsync({
-      'AveriaLibre-Regular': require('../assets/fonts/AveriaLibre-Regular.ttf'), // Verifique o caminho correto da fonte
-    });
-  } catch (error) {
-    console.log('Erro ao carregar a fonte:', error);
-  }
+  await Font.loadAsync({
+    'Averia Libre': require('../assets/fonts/AveriaLibre-Regular.ttf'), // Verifique o caminho da fonte
+  });
 };
 
 const App = () => {
@@ -93,33 +88,32 @@ const styles = StyleSheet.create({
   },
   titulo: {
     fontSize: 24,
-    fontFamily: 'AveriaLibre-Regular', // Aplica a fonte personalizada
+    fontFamily: 'Averia Libre', // Usa a fonte personalizada
     color: '#FFFFFF',
     textAlign: 'center',
     marginBottom: 30,
   },
   label: {
     fontSize: 18,
-    fontFamily: 'AveriaLibre-Regular', // Aplica a fonte personalizada
+    fontFamily: 'Averia Libre', // Usa a fonte personalizada
     color: '#FFFFFF',
     marginBottom: 5,
   },
   input: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 0,
+    borderRadius: 0, // Remove a borda arredondada
     padding: 10,
     marginBottom: 15,
-    fontFamily: 'AveriaLibre-Regular', // Aplica a fonte personalizada nos inputs
   },
   mensagemErro: {
     color: '#FF0000',
-    fontFamily: 'AveriaLibre-Regular', // Aplica a fonte personalizada na mensagem de erro
+    fontFamily: 'Averia Libre', // Usa a fonte personalizada
     marginBottom: 10,
   },
   botaoEntrar: {
     backgroundColor: '#28A745',
     padding: 15,
-    borderRadius: 0,
+    borderRadius: 0, // Remove a borda arredondada
     alignItems: 'center',
     marginBottom: 20,
   },
@@ -129,21 +123,22 @@ const styles = StyleSheet.create({
   botaoCriarConta: {
     backgroundColor: '#17A2B8',
     padding: 10,
-    borderRadius: 0,
+    borderRadius: 0, // Remove a borda arredondada
     alignItems: 'center',
     marginBottom: 10,
   },
   botaoEsqueciSenha: {
     backgroundColor: '#6C757D',
     padding: 10,
-    borderRadius: 0,
+    borderRadius: 0, // Remove a borda arredondada
     alignItems: 'center',
   },
   textoBotao: {
-    fontFamily: 'AveriaLibre-Regular', // Aplica a fonte personalizada nos botões
+    fontFamily: 'Averia Libre', // Usa a fonte personalizada
     fontSize: 16,
     color: '#FFFFFF',
   },
 });
 
 export default App;
+
