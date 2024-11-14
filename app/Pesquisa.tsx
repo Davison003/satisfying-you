@@ -70,7 +70,6 @@ export default function Index() {
             <Text style={estilos.feedback}>Péssimo</Text>
           </TouchableOpacity>
         </Link>
-        
       </View>
     </View>
   );
@@ -95,12 +94,14 @@ const estilos = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 30,
+    fontFamily: "AveriaLibre-Regular",
   },
   textao: {
     fontSize: 30,
     color: "white",
-    fontWeight: "bold",
+    // fontWeight: "bold",
     textAlign: "center",
+    fontFamily: "AveriaLibre-Regular",
   },
   botoes: {
     flex: 2 / 3,
@@ -117,5 +118,6 @@ const estilos = StyleSheet.create({
     fontSize: 25,
     color: "white",
     fontWeight: "semibold",
+    fontFamily: "AveriaLibre-Regular",
   },
 });
