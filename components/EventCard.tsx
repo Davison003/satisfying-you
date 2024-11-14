@@ -32,14 +32,15 @@ const styles = StyleSheet.create({
     color: "#48a",
     fontSize: 24,
     textAlign: "center",
-    fontFamily: "sans-serif",
+    fontFamily: "AveriaLibre-Regular",
     textTransform: "uppercase",
   },
   date: {
+    fontFamily: "AveriaLibre-Regular",
     fontSize: 16,
     opacity: 0.5,
     textAlign: "center",
-    fontWeight: "bold",
+    // fontWeight: "bold",
   },
   imgStyle: {
     width: imgSize[0],
