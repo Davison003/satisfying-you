@@ -59,6 +59,7 @@ const Home = () => {
         {/* <Icon source="text-search" size={30} /> */}
         <Searchbar
           style={styles.searchbarContainer}
+          inputStyle={{ fontFamily: "AveriaLibre-Regular" }}
           placeholder="Insira o termo de busca..."
           onChangeText={(text) => setText(text)}
           value={text}
@@ -100,6 +101,7 @@ const styles = StyleSheet.create({
   },
 
   searchbarContainer: {
+    fontFamily: "AveriaLibre-Regular",
     backgroundColor: "#fff",
     borderRadius: 0,
     // color: "#ae3",
@@ -117,6 +119,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#372775",
   },
   btnStyle: {
+    fontFamily: "AveriaLibre-Regular",
     backgroundColor: "#37BD6D",
     borderRadius: 0,
     width: "80%",
@@ -131,9 +134,11 @@ const styles = StyleSheet.create({
     },
   },
   btnText: {
+    fontFamily: "AveriaLibre-Regular",
+    textTransform: "uppercase",
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
+    // fontWeight: "bold",
   },
 });
 

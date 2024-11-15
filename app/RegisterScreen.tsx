@@ -100,27 +100,32 @@ const estilos = StyleSheet.create({
     marginBottom: 20,
   },
   titulo: {
+    fontFamily: "AveriaLibre-Regular",
     color: "#FFFFFF",
     fontSize: 24,
     marginLeft: 10,
   },
   form: {
+    fontFamily: "AveriaLibre-Regular",
     backgroundColor: "#3e2c78",
     padding: 20,
     borderRadius: 10,
   },
   label: {
+    fontFamily: "AveriaLibre-Regular",
     color: "#FFFFFF",
     fontSize: 16,
     marginBottom: 5,
   },
   input: {
+    fontFamily: "AveriaLibre-Regular",
     backgroundColor: "#FFFFFF",
     padding: 10,
     borderRadius: 5,
     marginBottom: 15,
   },
   mensagemErro: {
+    fontFamily: "AveriaLibre-Regular",
     color: "#FF6347",
     marginBottom: 10,
   },
@@ -131,6 +136,7 @@ const estilos = StyleSheet.create({
     alignItems: "center",
   },
   textoBotao: {
+    fontFamily: "AveriaLibre-Regular",
     color: "#FFFFFF",
     fontSize: 18,
   },

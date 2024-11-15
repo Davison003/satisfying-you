@@ -32,8 +32,9 @@ const estilos = StyleSheet.create({
   texto: {
     color: "#FFFFFF",
     fontSize: 22,
-    fontWeight: "bold",
+    // fontWeight: "bold",
     textAlign: "center",
     marginBottom: 50,
+    fontFamily: "AveriaLibre-Regular",
   },
 });

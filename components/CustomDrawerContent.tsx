@@ -22,6 +22,7 @@ export default function CustomDrawerContent(props: any) {
           pressColor="#ead"
           label={"usuario@dominio.com"}
           labelStyle={{
+            fontFamily: "AveriaLibre-Regular",
             color: "white",
             borderBottomColor: "#fff",
             paddingBottom: 10,
@@ -44,6 +45,7 @@ export default function CustomDrawerContent(props: any) {
             pressColor="#ead"
             label={"Pesquisa"}
             labelStyle={{
+              fontFamily: "AveriaLibre-Regular",
               color: "white",
               marginLeft: -20,
               fontSize: fontSizeLabel,
@@ -60,6 +62,7 @@ export default function CustomDrawerContent(props: any) {
             style={{ marginTop: 30 }}
             label="Sair"
             labelStyle={{
+              fontFamily: "AveriaLibre-Regular",
               color: "white",
               marginLeft: -20,
               fontSize: fontSizeLabel,
