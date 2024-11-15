@@ -55,6 +55,14 @@ export default function RootLayout() {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="ActionSearch"
+        options={{
+          title: "Carnaval",
+          headerStyle: { backgroundColor: "#2b1d62" },
+          headerTitleStyle: { fontFamily: "AveriaLibre-Regular" },
+        }}
+      />
     </Stack>
   );
 }
