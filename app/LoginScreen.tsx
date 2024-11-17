@@ -6,13 +6,14 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useState } from "react";
 import { useRouter } from "expo-router";
 
 // Definição do App
-const App = () => {
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+const LoginScreen = () => {
+  const [email, setEmail] = useState("email@domain.com");
+  const [senha, setSenha] = useState("12345");
   const [mensagemErro, setMensagemErro] = useState("");
 
   const router = useRouter();
@@ -34,7 +35,21 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Satisfying.you 😊</Text>
+      <View
+        style={{
+          justifyContent: "center",
+          flexDirection: "row",
+          alignItems: "flex-start",
+        }}
+      >
+        <Text style={styles.titulo}>Satisfying.you</Text>
+        <MaterialCommunityIcons
+          style={{ paddingLeft: 10 }}
+          name="emoticon-happy-outline"
+          size={30}
+          color="white"
+        />
+      </View>
 
       <Text style={styles.label}>E-mail</Text>
       <TextInput
@@ -144,4 +159,4 @@ const styles = StyleSheet.create({
 });
 
 // Exportação
-export default App;
+export default LoginScreen;
