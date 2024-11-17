@@ -1,66 +1,83 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Modal} from "react-native"
-import { useState } from "react"
-import { Ionicons } from "@expo/vector-icons"
-
-// Definição
-const [nome, setNome] = useState("")
-const [data, setData] = useState("")
-const [isModalVisible, setIsModalVisible] = useState(false)
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  Modal,
+} from "react-native";
+import { useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 const ModifySearch = () => {
+  // Definição
+  const [nome, setNome] = useState("");
+  const [data, setData] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const router = useRouter();
   const handleDelete = () => {
     console.log("Pesquisa apagada!");
     setIsModalVisible(false);
+    router.replace("./(drawer)/Home");
   };
 
   return (
     <View style={estilo.fundo}>
-
       <View style={estilo.alinhamento}>
-
         <Text style={estilo.titulo}>Nome</Text>
-          <TextInput 
-            style={estilo.texto}
-            placeholder="Carnaval 2024"
-            placeholderTextColor="#3F92C5"
-            value={nome}
-            onChangeText={setNome}
-            keyboardType="default"
-          />
+        <TextInput
+          style={estilo.texto}
+          placeholder="Carnaval 2024"
+          placeholderTextColor="#3F92C5"
+          value={nome}
+          onChangeText={setNome}
+          keyboardType="default"
+        />
 
         <Text style={estilo.titulo}>Data</Text>
-          <View style={estilo.texto}>
-            <View style={estilo.conteudo}>
-              <TextInput
-                style={estilo.texto}
-                placeholder="16/02/2024"
-                placeholderTextColor="#3F92C5"
-                value={data}
-                onChangeText={setData}
-                keyboardType="numeric"
-              />
-              <Ionicons name="calendar" size={24} color="#000" style={estilo.icone}/>
-            </View>
+        <View style={estilo.texto}>
+          <View style={estilo.conteudo}>
+            <TextInput
+              style={estilo.texto}
+              placeholder="16/02/2024"
+              placeholderTextColor="#3F92C5"
+              value={data}
+              onChangeText={setData}
+              keyboardType="numeric"
+            />
+            <Ionicons
+              name="calendar"
+              size={24}
+              color="#000"
+              style={estilo.icone}
+            />
           </View>
+        </View>
 
         <Text style={estilo.titulo}>Imagem</Text>
         <View style={estilo.texto}>
           <View style={estilo.conteudo}>
-            <Image style={estilo.imagem} source={require("@/assets/images/carnaval.png")}/>
+            <Image
+              style={estilo.imagem}
+              source={require("@/assets/images/carnaval.png")}
+            />
           </View>
         </View>
-  
       </View>
 
       <TouchableOpacity style={estilo.botaoSalvar}>
-          <Text style={estilo.textoBotaoSalvar}>SALVAR</Text>
+        <Text style={estilo.textoBotaoSalvar}>SALVAR</Text>
       </TouchableOpacity>
 
-     
-      <TouchableOpacity style={estilo.botaoDeletar} onPress={() => setIsModalVisible(true)}>
-          <Image source={require("@/assets/images/lixeira.png")}/>
-          <Text style={estilo.titulo}>Apagar</Text>
+      <TouchableOpacity
+        style={estilo.botaoDeletar}
+        onPress={() => setIsModalVisible(true)}
+      >
+        <Image source={require("@/assets/images/lixeira.png")} />
+        <Text style={estilo.titulo}>Apagar</Text>
       </TouchableOpacity>
 
       <Modal
@@ -71,25 +88,29 @@ const ModifySearch = () => {
       >
         <View style={estilo.modalSobrepor}>
           <View style={estilo.modalConteudo}>
-            <Text style={estilo.modalTexto}>Tem certeza de apagar essa pesquisa?</Text>
-            
+            <Text style={estilo.modalTexto}>
+              Tem certeza de apagar essa pesquisa?
+            </Text>
+
             <View style={estilo.modalBotaoAlinhamento}>
-              <TouchableOpacity style={estilo.modalBotaoSim} onPress={handleDelete}>
+              <TouchableOpacity
+                style={estilo.modalBotaoSim}
+                onPress={handleDelete}
+              >
                 <Text style={estilo.modalTextoBotao}>SIM</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={estilo.modalBotaoCancelar} onPress={() => setIsModalVisible(false)}>
+              <TouchableOpacity
+                style={estilo.modalBotaoCancelar}
+                onPress={() => setIsModalVisible(false)}
+              >
                 <Text style={estilo.modalTextoBotao}>CANCELAR</Text>
               </TouchableOpacity>
             </View>
           </View>
         </View>
       </Modal>
-      
-      
-      
     </View>
-             
   );
 };
 
@@ -97,12 +118,12 @@ const estilo = StyleSheet.create({
   fundo: {
     flex: 1,
     backgroundColor: "#372775",
-    padding: 20
+    padding: 20,
   },
   alinhamento: {
     fontFamily: "AveriaLibre-Regular",
     backgroundColor: "#372775",
-    padding: 20
+    padding: 20,
   },
   titulo: {
     fontFamily: "AveriaLibre-Regular",
@@ -119,18 +140,18 @@ const estilo = StyleSheet.create({
     marginBottom: 15,
   },
   conteudo: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   icone: {
     opacity: 0.41,
-    marginLeft: 180
+    marginLeft: 180,
   },
   imagem: {
-    marginLeft: 120
+    marginLeft: 120,
   },
   botaoSalvar: {
-    backgroundColor: "#37BD6D", 
+    backgroundColor: "#37BD6D",
     height: 50,
     width: 333,
     marginLeft: 20,
@@ -149,7 +170,7 @@ const estilo = StyleSheet.create({
     backgroundColor: "#372775",
     marginVertical: 250,
     marginLeft: 280,
-    alignItems: "center"
+    alignItems: "center",
   },
   modalSobrepor: {
     flex: 1,
@@ -168,7 +189,7 @@ const estilo = StyleSheet.create({
     fontSize: 18,
     color: "#FFFFFF",
     marginBottom: 20,
-    textAlign: "center"
+    textAlign: "center",
   },
   modalBotaoAlinhamento: {
     flexDirection: "row",
@@ -184,7 +205,7 @@ const estilo = StyleSheet.create({
   modalBotaoCancelar: {
     backgroundColor: "#3F92C5",
     paddingVertical: 10,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   modalTextoBotao: {
     fontFamily: "AveriaLibre-Regular",
