@@ -68,7 +68,12 @@ const ModifySearch = () => {
         </View>
       </View>
 
-      <TouchableOpacity style={estilo.botaoSalvar}>
+      <TouchableOpacity
+        style={estilo.botaoSalvar}
+        onPress={() => {
+          router.replace("./(drawer)/Home");
+        }}
+      >
         <Text style={estilo.textoBotaoSalvar}>SALVAR</Text>
       </TouchableOpacity>
 

@@ -1,12 +1,19 @@
+import { useRouter } from "expo-router";
 import { StyleSheet, Image, TouchableOpacity, Text } from "react-native";
 
 const cardSize = [250, 250];
 const imgSize = [120, 120];
 
 export default function Card(info: any) {
+  const router = useRouter();
   // const img = require(`../assets/images/${info.image}`);
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        router.push("/ActionSearch");
+      }}
+    >
       <Image source={info.image} alt={info.title} style={styles.imgStyle} />
       <Text style={styles.title}>{info.title}</Text>
       <Text style={styles.date}>{info.date}</Text>
