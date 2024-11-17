@@ -29,7 +29,7 @@ export default function RootLayout() {
         headerTitleStyle: { fontFamily: "AveriaLibre-Regular" },
       }}
     >
-      <Stack.Screen name="index" options={{ title: "Satisfying You" }} />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen
         name="RegisterScreen"
         options={{
