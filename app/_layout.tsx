@@ -63,6 +63,14 @@ export default function RootLayout() {
           headerTitleStyle: { fontFamily: "AveriaLibre-Regular" },
         }}
       />
+      <Stack.Screen
+        name="ModifySearch"
+        options={{
+          title: "Modificar Pesquisa",
+          headerStyle: { backgroundColor: "#2b1d62" },
+          headerTitleStyle: { fontFamily: "AveriaLibre-Regular" },
+        }}
+      />
     </Stack>
   );
 }

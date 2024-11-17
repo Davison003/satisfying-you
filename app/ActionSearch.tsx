@@ -1,5 +1,5 @@
 //Importa
-import { TouchableOpacity, View, Image, StyleSheet} from "react-native";
+import { TouchableOpacity, View, Image, StyleSheet} from "react-native"
 
 //Definição
 const ActionSearch = () => {
@@ -50,8 +50,8 @@ const estilo = StyleSheet.create({
     padding: 20
   },
   alinhamento: {
-    justifyContent: 'space-around',
-    alignContent: 'center',
+    justifyContent: "space-around",
+    alignContent: "center",
     flex: 1
   },
   imagem: {

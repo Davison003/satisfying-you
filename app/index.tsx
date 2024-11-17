@@ -36,6 +36,11 @@ const LoginPage = () => {
           <Text style={{ backgroundColor: "#ab0" }}> Ação de Pesquisa </Text>
         </TouchableOpacity>
       </Link>
+      <Link href="/ModifySearch" asChild>
+        <TouchableOpacity>
+          <Text style={{ backgroundColor: "#ab0" }}> Modificar Pesquisa </Text>
+        </TouchableOpacity>
+      </Link>
 
       {/* <TouchableOpacity onPress={() => router.replace("./(drawer)/Home")}>
         <Text style={{ backgroundColor: "#ead" }}>toca auqi</Text>
