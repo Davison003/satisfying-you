@@ -95,7 +95,7 @@ const novaPesquisa = () => {
     }
 
     if(!erro){
-      router.navigate("/LoginScreen")
+      router.navigate("/(drawer)/Home")
     }
   }
 
@@ -160,22 +160,22 @@ const estilos = StyleSheet.create({
     alignItems: "center"
   },
   texto: {
-    fontSize: 20,
+    fontSize: 22,
     color: "white",
     fontFamily: "AveriaLibre-Regular"
   },
   caixa: {
     backgroundColor: "white",
-    width: 450,
-    height: 35,
+    width: 350,
+    height: 40,
     color: "#3F92C5",
     fontFamily: "AveriaLibre-Regular",
-    fontSize: 20
+    fontSize: 22
   },
   caixaData: {
     backgroundColor: "white",
-    width: 450,
-    height: 35,
+    width: 350,
+    height: 40,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -184,9 +184,9 @@ const estilos = StyleSheet.create({
   textoData: {
     color: "#3F92C5",
     fontFamily: "AveriaLibre-Regular",
-    fontSize: 20,
-    height: 35,
-    width: 400
+    fontSize: 22,
+    height: 40,
+    width: 300
   },
   imgCalendario: {
     width: 30,
@@ -196,28 +196,28 @@ const estilos = StyleSheet.create({
   caixaImg: {
     backgroundColor: "white",
     width: 250,
-    height: 65,
+    height: 90,
     alignItems: "center",
     justifyContent: "center"
   },
   textoImg: {
     fontFamily: "AveriaLibre-Regular",
     color: "#939393",
-    fontSize: 15
+    fontSize: 16
   },
   Imagem: {
-    width: 60,
-    height: 60
+    width: 80,
+    height: 80
   },
   cCaixas: {
-    width: 450,
+    width: 350,
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-around"
   },
   bt: {
-    width: 450,
-    height: 35,
+    width: 350,
+    height: 40,
     backgroundColor: "#37BD6D",
     alignItems: "center",
     justifyContent: "center"
@@ -230,7 +230,7 @@ const estilos = StyleSheet.create({
   erro: {
     color: "#FD7979",
     fontFamily: "AveriaLibre-Regular",
-    fontSize: 15
+    fontSize: 20
   }
 })
   

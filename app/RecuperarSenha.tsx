@@ -46,20 +46,20 @@ const estilos = StyleSheet.create({
         paddingTop: 45
     },
     texto: {
-        fontSize: 20,
+        fontSize: 22,
         color: "white",
         fontFamily: "AveriaLibre-Regular"
     },
     caixa: {
         backgroundColor: "white",
-        width: 450,
-        height: 35,
+        width: 350,
+        height: 40,
         color: "#3F92C5",
         fontFamily: "AveriaLibre-Regular",
-        fontSize: 20
+        fontSize: 22
     },
     cCaixas: {
-        width: 450,
+        width: 350,
         flex: 1,
         flexDirection: "column",
         justifyContent: "space-around"
@@ -70,17 +70,17 @@ const estilos = StyleSheet.create({
         fontSize: 22
     },
     bt: {
-        width: 450,
+        width: 350,
         backgroundColor: "#37BD6D",
         textAlign: "center",
-        height: 35,
+        height: 40,
         alignItems: "center",
         justifyContent: "center"
     },
     erro: {
         color: "#FD7979",
         fontFamily: "AveriaLibre-Regular",
-        fontSize: 15
+        fontSize: 20
     }
 })
   
