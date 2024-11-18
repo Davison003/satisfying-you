@@ -20,6 +20,18 @@ In the output, you'll find options to open the app in a
 - [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/) (press a)
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Web version (press w)
 
-This project uses stack and drawer navigation. It utilizes file based routing.
+
+## Collaborators 
+
+- Amanda
+- Davi
+- Lívia
+- Melina
+- Victor
+
+## Links
+- [Github Repository](https://github.com/Davison003/satisfying-you)
+
 
