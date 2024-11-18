@@ -77,7 +77,12 @@ const Home = () => {
         ))}
       </ScrollView>
       <View style={styles.container}>
-        <TouchableOpacity style={styles.btnStyle} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.btnStyle}
+          onPress={() => {
+            router.push("/NovaPesquisa");
+          }}
+        >
           <Text style={styles.btnText}>Nova Pesquisa</Text>
         </TouchableOpacity>
       </View>

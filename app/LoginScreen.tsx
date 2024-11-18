@@ -87,7 +87,10 @@ const LoginScreen = () => {
 
       <TouchableOpacity
         style={styles.botaoEsqueciSenha}
-        onPress={() => console.log("Esqueci minha senha")}
+        onPress={() => {
+          router.push("./RecuperarSenha");
+          console.log("Esqueci minha senha");
+        }}
       >
         <Text style={styles.textoBotao}>Esqueci minha senha</Text>
       </TouchableOpacity>
