@@ -25,8 +25,12 @@ export default function RootLayout() {
     <Stack
       screenOptions={{
         headerStyle: { backgroundColor: "#2b1d62" },
-        headerTintColor: "#fff",
-        headerTitleStyle: { fontFamily: "AveriaLibre-Regular" },
+
+        headerTintColor: "#372775",
+        headerTitleStyle: {
+          color: "#FFFFFF",
+          fontFamily: "AveriaLibre-Regular",
+        },
       }}
     >
       <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -34,8 +38,12 @@ export default function RootLayout() {
         name="RegisterScreen"
         options={{
           title: "Nova Conta",
+          headerTintColor: "#372775",
           headerStyle: { backgroundColor: "#2b1d62" },
-          headerTitleStyle: { fontFamily: "AveriaLibre-Regular" },
+          headerTitleStyle: {
+            color: "#FFFFFF",
+            fontFamily: "AveriaLibre-Regular",
+          },
         }}
       />
       <Stack.Screen name="Pesquisa" options={{ headerShown: false }} />
@@ -44,8 +52,12 @@ export default function RootLayout() {
         name="Relatorio"
         options={{
           title: "Relatório",
+          headerTintColor: "#372775",
           headerStyle: { backgroundColor: "#2b1d62" },
-          headerTitleStyle: { fontFamily: "AveriaLibre-Regular" },
+          headerTitleStyle: {
+            color: "#FFFFFF",
+            fontFamily: "AveriaLibre-Regular",
+          },
         }}
       />
       <Stack.Screen
@@ -59,16 +71,50 @@ export default function RootLayout() {
         name="ActionSearch"
         options={{
           title: "Carnaval",
+          headerTintColor: "#372775",
           headerStyle: { backgroundColor: "#2b1d62" },
-          headerTitleStyle: { fontFamily: "AveriaLibre-Regular" },
+          headerTitleStyle: {
+            color: "#FFFFFF",
+            fontFamily: "AveriaLibre-Regular",
+          },
         }}
       />
       <Stack.Screen
         name="ModifySearch"
         options={{
           title: "Modificar Pesquisa",
+          headerTintColor: "#372775",
           headerStyle: { backgroundColor: "#2b1d62" },
-          headerTitleStyle: { fontFamily: "AveriaLibre-Regular" },
+          headerTitleStyle: {
+            color: "#FFFFFF",
+            fontFamily: "AveriaLibre-Regular",
+          },
+        }}
+      />
+      <Stack.Screen
+        name="NovaPesquisa"
+        options={{
+          headerTitle: "Nova pesquisa",
+          headerTintColor: "#372775",
+          headerStyle: { backgroundColor: "#2B1D62" },
+          headerTitleStyle: {
+            color: "#FFFFFF",
+            fontFamily: "AveriaLibre-Regular",
+            fontSize: 28,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="RecuperarSenha"
+        options={{
+          headerTitle: "Recuperação de senha",
+          headerTintColor: "#372775",
+          headerStyle: { backgroundColor: "#2B1D62" },
+          headerTitleStyle: {
+            color: "#FFFFFF",
+            fontFamily: "AveriaLibre-Regular",
+            fontSize: 28,
+          },
         }}
       />
     </Stack>

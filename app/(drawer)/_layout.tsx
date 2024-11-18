@@ -8,6 +8,7 @@ export default function DrawerLayout() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
         screenOptions={{
+          title: "",
           headerTintColor: "#fff",
           headerTitleStyle: { fontFamily: "AveriaLibre-Regular" },
           headerStyle: { backgroundColor: "#2b1d62" },
