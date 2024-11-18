@@ -179,7 +179,6 @@ const estilo = StyleSheet.create({
   },
   modalSobrepor: {
     flex: 1,
-    backgroundColor: "#2B1F5C",
     justifyContent: "center",
     alignItems: "center",
   },

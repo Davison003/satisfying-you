@@ -1,6 +1,6 @@
 //Importa
 import { useRouter } from "expo-router";
-import { TouchableOpacity, View, Image, StyleSheet } from "react-native";
+import { TouchableOpacity, View, Image, StyleSheet, Text } from "react-native";
 
 //Definição
 const ActionSearch = () => {
@@ -9,44 +9,56 @@ const ActionSearch = () => {
     <View style={estilo.fundo}>
       <View style={estilo.alinhamento}>
         <TouchableOpacity
+          style={estilo.caixa}
           onPress={() => {
             router.push("/ModifySearch");
           }}
-        >
+        > 
           <Image
             style={estilo.imagem}
-            source={require("@/assets/images/modificar.png")}
+            source={require("@/assets/images/modifica.png")}
           />
+
+          <Text style={estilo.texto}>Modificar</Text>
+
         </TouchableOpacity>
 
         <TouchableOpacity
+          style={estilo.caixa}
           onPress={() => {
             router.push("/Pesquisa");
           }}
         >
           <Image
             style={estilo.imagem}
-            source={require("@/assets/images/coletar.png")}
+            source={require("@/assets/images/coleta.png")}
           />
+
+          <Text style={estilo.texto}>Coletar dados</Text>
+
         </TouchableOpacity>
 
         <TouchableOpacity
+          style={estilo.caixa}
           onPress={() => {
             router.push("/Relatorio");
           }}
         >
           <Image
             style={estilo.imagem}
-            source={require("@/assets/images/relatorio.png")}
+            source={require("@/assets/images/relato.png")}
           />
+
+          <Text style={estilo.texto}>Relatório</Text>
+
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-const alt = 200;
-const larg = 230;
+const alt = 100;
+const larg = 100;
 
 const estilo = StyleSheet.create({
   fundo: {
@@ -62,10 +74,24 @@ const estilo = StyleSheet.create({
     alignContent: "center",
     flex: 1,
   },
+  texto: {
+    fontFamily: "AveriaLibre-Regular",
+    color: "#FFFFFF",
+    fontSize: 24,
+    top: 8
+  },
+  caixa: {
+    backgroundColor: "#312464",
+    borderRadius: 10,
+    height: 200,
+    width: 200,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   imagem: {
     height: alt,
     width: larg,
-  },
+  }
 });
 
 //Exportação
