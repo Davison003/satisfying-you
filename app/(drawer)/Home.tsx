@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import { Searchbar } from "react-native-paper";
 
+import { getAuth, signOut } from "firebase/auth";
+
 const data = [
   {
     name: "secomp 2023",

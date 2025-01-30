@@ -10,6 +10,9 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useState } from "react";
 import { useRouter } from "expo-router";
 
+import { auth } from "../firebase/firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 // Definição do App
 const LoginScreen = () => {
   const [email, setEmail] = useState("email@domain.com");
@@ -17,20 +20,39 @@ const LoginScreen = () => {
   const [mensagemErro, setMensagemErro] = useState("");
 
   const router = useRouter();
+
+  const handleSignIn = async () => {
+    if (verificarCampos()) {
+      try {
+        const userCred = await signInWithEmailAndPassword(auth, email, senha);
+        if (userCred.user) {
+          router.navigate("./Home");
+        }
+      } catch (err) {
+        setMensagemErro("E-mail e/ou senha inválidos.");
+      }
+    }
+  };
   const verificarCampos = () => {
-    const emailValido = email.includes("@") && email.endsWith(".com");
+    setMensagemErro("");
+
+    const emailValido =
+      email.includes("@") && (email.endsWith(".com") || email.endsWith(".br"));
     if (!emailValido) {
       setMensagemErro("E-mail e/ou senha inválidos.");
+      limpar();
+      return false;
     } else {
+      limpar();
       setMensagemErro("");
-      router.navigate("./(drawer)/Home");
+      return true;
     }
   };
 
   const limpar = () => {
     setEmail("");
     setSenha("");
-    setMensagemErro("");
+    // setMensagemErro("");
   };
 
   return (
@@ -72,7 +94,7 @@ const LoginScreen = () => {
         <Text style={styles.mensagemErro}>{mensagemErro}</Text>
       ) : null}
 
-      <TouchableOpacity style={styles.botaoEntrar} onPress={verificarCampos}>
+      <TouchableOpacity style={styles.botaoEntrar} onPress={handleSignIn}>
         <Text style={styles.textoBotao}>Entrar</Text>
       </TouchableOpacity>
 
@@ -111,32 +133,32 @@ const styles = StyleSheet.create({
     fontFamily: "AveriaLibre-Regular", // Aplica a fonte personalizada
     color: "#FFFFFF",
     textAlign: "center",
-    marginBottom: 30,
+    // marginBottom: 30,
   },
   label: {
     fontSize: 18,
     fontFamily: "AveriaLibre-Regular", // Aplica a fonte personalizada
     color: "#FFFFFF",
-    marginBottom: 5,
+    // marginBottom: 5,
   },
   input: {
     backgroundColor: "#FFFFFF",
     borderRadius: 0,
     padding: 10,
-    marginBottom: 15,
+    // marginBottom: 15,
     fontFamily: "AveriaLibre-Regular", // Aplica a fonte personalizada nos inputs
   },
   mensagemErro: {
     color: "#FF0000",
     fontFamily: "AveriaLibre-Regular", // Aplica a fonte personalizada na mensagem de erro
-    marginBottom: 10,
+    // marginBottom: 10,
   },
   botaoEntrar: {
     backgroundColor: "#28A745",
     padding: 15,
     borderRadius: 0,
     alignItems: "center",
-    marginBottom: 20,
+    // marginBottom: 20,
   },
   espacamentoEntreBotoes: {
     height: 30,

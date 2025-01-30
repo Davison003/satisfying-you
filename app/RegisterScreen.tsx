@@ -9,6 +9,9 @@ import {
 import { useState } from "react";
 import { useRouter } from "expo-router";
 
+import { auth } from "../firebase/firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
 // Definição
 const NewAccount = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +21,8 @@ const NewAccount = () => {
 
   const router = useRouter();
 
-  const handleCadastro = () => {
+  const handleCadastro = async () => {
+    setMessage("");
     // Verificação de e-mail simples
     if (!email.includes("@") || !email.endsWith(".com")) {
       setMessage("Por favor, insira um e-mail válido.");
@@ -34,7 +38,16 @@ const NewAccount = () => {
     // Verifica se todos os campos estão preenchidos
     if (email && password && repeatPassword) {
       // setMessage("Conta criada com sucesso!");
-      router.navigate("./LoginScreen");
+
+      const userCred = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      userCred.user
+        ? router.navigate("./LoginScreen")
+        : setMessage("Erro ao criar a conta.");
     } else {
       setMessage("Por favor, preencha todos os campos.");
     }
@@ -92,37 +105,38 @@ const estilos = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#3e2c78",
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
   },
   header: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 20,
+    // marginBottom: 20,
   },
   titulo: {
     fontFamily: "AveriaLibre-Regular",
     color: "#FFFFFF",
     fontSize: 24,
-    marginLeft: 10,
+    // marginLeft: 10,
   },
   form: {
     fontFamily: "AveriaLibre-Regular",
     backgroundColor: "#3e2c78",
-    padding: 20,
+    // padding: 20,
     borderRadius: 10,
   },
   label: {
     fontFamily: "AveriaLibre-Regular",
     color: "#FFFFFF",
     fontSize: 16,
-    marginBottom: 5,
+    // marginBottom: 5,
   },
   input: {
     fontFamily: "AveriaLibre-Regular",
     backgroundColor: "#FFFFFF",
     padding: 10,
     borderRadius: 5,
-    marginBottom: 15,
+    marginBottom: 10,
   },
   mensagemErro: {
     fontFamily: "AveriaLibre-Regular",
