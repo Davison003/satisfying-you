@@ -15,8 +15,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 
 // Definição do App
 const LoginScreen = () => {
-  const [email, setEmail] = useState("email@domain.com");
-  const [senha, setSenha] = useState("12345");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
   const [mensagemErro, setMensagemErro] = useState("");
 
   const router = useRouter();
