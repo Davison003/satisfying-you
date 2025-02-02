@@ -10,18 +10,47 @@ import {
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { useSelector } from "react-redux";
+import { deleteDoc, updateDoc, doc } from "firebase/firestore";
+import { db } from "@/firebase/firebaseConfig";
 
 const ModifySearch = () => {
   // Definição
-  const [nome, setNome] = useState("");
-  const [data, setData] = useState("");
+  const [nome, setNome] = useState(
+    useSelector((state: any) => state.survey.name)
+  );
+  const [data, setData] = useState(
+    useSelector((state: any) => state.survey.date)
+  );
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const router = useRouter();
-  const handleDelete = () => {
+
+  const id = useSelector((state: any) => state.survey.id);
+  const email = useSelector((state: any) => state.login.email);
+
+  const handleDelete = async () => {
     console.log("Pesquisa apagada!");
-    setIsModalVisible(false);
-    router.replace("./(drawer)/Home");
+
+    try {
+      await deleteDoc(doc(db, "users", email, "surveys", id));
+      setIsModalVisible(false);
+      router.replace("./(drawer)/Home");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUpdate = async () => {
+    const surveyRef = doc(db, "users", email, "surveys", id);
+    try {
+      await updateDoc(surveyRef, {
+        name: nome,
+        date: data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -30,7 +59,7 @@ const ModifySearch = () => {
         <Text style={estilo.titulo}>Nome</Text>
         <TextInput
           style={estilo.texto}
-          placeholder="Carnaval 2024"
+          placeholder="Nome da pesquisa"
           placeholderTextColor="#3F92C5"
           value={nome}
           onChangeText={setNome}
@@ -42,9 +71,9 @@ const ModifySearch = () => {
           <View style={estilo.conteudo}>
             <TextInput
               style={estilo.texto}
-              placeholder="16/02/2024"
-              placeholderTextColor="#3F92C5"
               value={data}
+              placeholder="dd/mm/aaaa"
+              placeholderTextColor="#3F92C5"
               onChangeText={setData}
               keyboardType="numeric"
             />
@@ -71,6 +100,7 @@ const ModifySearch = () => {
       <TouchableOpacity
         style={estilo.botaoSalvar}
         onPress={() => {
+          handleUpdate();
           router.replace("./(drawer)/Home");
         }}
       >
