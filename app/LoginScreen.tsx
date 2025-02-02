@@ -12,6 +12,9 @@ import { useRouter } from "expo-router";
 
 import { auth } from "../firebase/firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from "react-redux";
+
+import { reducerSetEmail } from "@/redux/loginSlice";
 
 // Definição do App
 const LoginScreen = () => {
@@ -20,15 +23,20 @@ const LoginScreen = () => {
   const [mensagemErro, setMensagemErro] = useState("");
 
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleSignIn = async () => {
     if (verificarCampos()) {
       try {
         const userCred = await signInWithEmailAndPassword(auth, email, senha);
         if (userCred.user) {
+          console.log("user", { userCred });
+
+          dispatch(reducerSetEmail({ email: email }));
           router.navigate("./Home");
         }
       } catch (err) {
+        console.log(err);
         setMensagemErro("E-mail e/ou senha inválidos.");
       }
     }
@@ -158,7 +166,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 0,
     alignItems: "center",
-    // marginBottom: 20,
+    marginTop: 20,
   },
   espacamentoEntreBotoes: {
     height: 30,
