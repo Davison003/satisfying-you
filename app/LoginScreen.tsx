@@ -30,7 +30,7 @@ const LoginScreen = () => {
       try {
         const userCred = await signInWithEmailAndPassword(auth, email, senha);
         if (userCred.user) {
-          console.log("user", { userCred });
+          // console.log("user", { userCred });
 
           dispatch(reducerSetEmail({ email: email }));
           router.navigate("./Home");

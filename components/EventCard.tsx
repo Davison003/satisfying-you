@@ -11,7 +11,7 @@ export default function Card(info: any) {
   const dispatch = useDispatch();
   // const img = require(`../assets/images/${info.image}`);
 
-  const goToEditSurveyScreen = () => {
+  const goToModifySurveyScreen = () => {
     dispatch(
       reducerSetSurvey({
         id: info.id,
@@ -19,12 +19,12 @@ export default function Card(info: any) {
         date: info.date,
       })
     );
-    console.log("teste");
+    // console.log("teste");
     router.push("/ActionSearch");
   };
 
   return (
-    <TouchableOpacity style={styles.container} onPress={goToEditSurveyScreen}>
+    <TouchableOpacity style={styles.container} onPress={goToModifySurveyScreen}>
       <Image
         source={{ uri: info.image }}
         alt={info.title}

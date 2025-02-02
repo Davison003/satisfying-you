@@ -11,6 +11,8 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "app/(drawer)/Home.js"
+    "app/(drawer)/Home.js",
+    "app/NovaPesquisa.js",
+    "app/ModifySearch.js"
   ]
 }
