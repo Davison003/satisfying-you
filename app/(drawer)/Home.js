@@ -35,8 +35,6 @@ const Home = () => {
     });
   }, []);
 
-  // console.log("surveys", surveys);
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>

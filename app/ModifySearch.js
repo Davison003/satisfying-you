@@ -18,7 +18,6 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { useSelector } from "react-redux";
 import { deleteDoc, updateDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 
 const ModifySearch = () => {
   // Definição
@@ -41,7 +40,7 @@ const ModifySearch = () => {
   useEffect(() => {
     async function getImgFromFireStore() {
       const sv = await getDoc(doc(db, "users", email, "surveys", id));
-      console.log(sv.data().image);
+      // console.log(sv.data().image);
       setImagem(sv.data().image);
     }
 
@@ -68,7 +67,7 @@ const ModifySearch = () => {
         date: data,
         image: imagem,
       });
-      router.navigate("./(drawer)/Home");
+      router.replace("./(drawer)/Home");
     } catch (err) {
       console.log(err);
     }
@@ -161,30 +160,6 @@ const ModifySearch = () => {
     if (!resultado.canceled) {
       resizeImage(resultado.assets[0].uri);
     }
-  };
-
-  const validateFields = () => {
-    let erro = false;
-    if (nome == "") {
-      setNomeValido(true);
-      erro = true;
-    } else {
-      setNomeValido(false);
-    }
-    if (data == "") {
-      setDataValida(true);
-      erro = true;
-    } else {
-      setDataValida(false);
-    }
-    if (imagem == null) {
-      setImagemValida(true);
-      erro = true;
-    } else {
-      setImagemValida(false);
-    }
-
-    return erro;
   };
 
   return (
