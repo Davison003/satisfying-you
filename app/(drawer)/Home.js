@@ -35,47 +35,7 @@ const Home = () => {
     });
   }, []);
 
-  console.log("surveys", surveys);
-
-  // return (
-  //   <View style={styles.mainContainer}>
-  //     <View style={styles.container}>
-  //       <Searchbar
-  //         style={styles.searchbarContainer}
-  //         inputStyle={{ fontFamily: "AveriaLibre-Regular" }}
-  //         placeholder="Insira o termo de busca..."
-  //         onChangeText={(text) => setText(text)}
-  //         value={text}
-  //       />
-  //     </View>
-  //     <ScrollView contentContainerStyle={styles.carrousel} horizontal={true}>
-  //       {surveys.length ? (
-  //         surveys.map((item) => (
-  //           <EventCard
-  //             style={{ padding: 100 }}
-  //             key={item.name}
-  //             title={item.name}
-  //             date={item.date}
-  //             image={item.image}
-  //           />
-  //         ))
-  //       ) : (
-  //         <Text>Nenhuma pesquisa encontrada</Text>
-  //       )}
-  //     </ScrollView>
-  //     <View style={styles.container}>
-  //       <TouchableOpacity
-  //         style={styles.btnStyle}
-  //         onPress={() => {
-  //           router.push("/NovaPesquisa");
-  //         }}
-  //       >
-  //         <Text style={styles.btnText}>Nova Pesquisa</Text>
-  //       </TouchableOpacity>
-  //     </View>
-  //     <View style={{ flex: 1, backgroundColor: "#372775" }}></View>
-  //   </View>
-  // );
+  // console.log("surveys", surveys);
 
   return (
     <View style={styles.container}>
@@ -120,60 +80,6 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
-  // mainContainer: {
-  //   flex: 1,
-  // },
-  // container: {
-  //   flex: 1,
-  //   display: "flex",
-  //   paddingTop: 20,
-  //   // marginBottom: -20,
-  //   alignItems: "center",
-  //   // justifyContent: "center",
-  //   backgroundColor: "#372775",
-  // },
-
-  // searchbarContainer: {
-  //   fontFamily: "AveriaLibre-Regular",
-  //   backgroundColor: "#fff",
-  //   borderRadius: 0,
-  //   // color: "#ae3",
-  //   width: "80%",
-  //   marginTop: 10,
-  // },
-  carrousel: {
-    display: "flex",
-    // paddingVertical: 20,
-    // paddingHorizontal: 20,
-    // alignItems: "center",
-    // justifyContent: "space-between",
-    // gap: 20,
-    flexDirection: "row",
-    backgroundColor: "#372775",
-  },
-  // btnStyle: {
-  //   fontFamily: "AveriaLibre-Regular",
-  //   backgroundColor: "#37BD6D",
-  //   borderRadius: 0,
-  //   width: "80%",
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  //   padding: 8,
-  //   // todo: shadow on btn element
-  //   shadowColor: "#000",
-  //   shadowOffset: {
-  //     width: 0,
-  //     height: 5,
-  //   },
-  // },
-  // btnText: {
-  //   fontFamily: "AveriaLibre-Regular",
-  //   textTransform: "uppercase",
-  //   color: "#fff",
-  //   fontSize: 16,
-  //   // fontWeight: "bold",
-  // },
-
   container: {
     flex: 1,
     backgroundColor: "#372775",
@@ -188,6 +94,12 @@ const styles = StyleSheet.create({
     // marginLeft: 10,
     marginBottom: 5,
     fontFamily: "AveriaLibre-Regular",
+  },
+  carrousel: {
+    display: "flex",
+
+    flexDirection: "row",
+    backgroundColor: "#372775",
   },
   newSurveyBtn: {
     backgroundColor: "#4CAF50",

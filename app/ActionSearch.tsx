@@ -76,9 +76,11 @@ const estilo = StyleSheet.create({
     padding: 20,
   },
   alinhamento: {
-    justifyContent: "space-around",
+    justifyContent: "space-between",
+    gap: 20,
     alignContent: "center",
     flex: 1,
+    flexDirection: "row",
   },
   texto: {
     fontFamily: "AveriaLibre-Regular",

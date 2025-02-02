@@ -141,16 +141,18 @@ const estilos = StyleSheet.create({
   },
   botoes: {
     flex: 2 / 3,
-    flexDirection: "column",
-    justifyContent: "space-around",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
   },
   escolha: {
-    flexDirection: "row",
+    flexDirection: "column",
+    // justifyContent: "flex-start",
     alignItems: "center",
+    gap: 10,
     left: 30,
   },
   feedback: {
-    left: 50,
+    // left: 50,
     fontSize: 25,
     color: "white",
     fontWeight: "semibold",
