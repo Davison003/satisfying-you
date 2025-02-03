@@ -1,10 +1,31 @@
 import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { Link, useRouter } from "expo-router";
+import { useSelector } from "react-redux";
+import { db } from "@/firebase/firebaseConfig";
+import { doc, increment, updateDoc } from "firebase/firestore";
 
 export default function Index() {
   const thanksRoute = "/Agradecimentos";
   const emotionImgSize = [75, 75];
   const router = useRouter();
+
+  const surveyId = useSelector((state: any) => state.survey.id);
+  const surveyName = useSelector((state: any) => state.survey.name);
+  const email = useSelector((state: any) => state.login.email);
+
+  const avaliacao = ["excelente", "bom", "neutro", "ruim", "pessimo"];
+
+  const handleFeedback = async (fb: string) => {
+    const surveyRef = doc(db, "users", email, "surveys", surveyId);
+
+    try {
+      await updateDoc(surveyRef, {
+        [`feedback.${fb}`]: increment(1),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <View style={estilos.raiz}>
@@ -17,12 +38,15 @@ export default function Index() {
       ></TouchableOpacity>
 
       <View style={estilos.titulo}>
-        <Text style={estilos.textao}>O que você achou da Pesquisa 2024?</Text>
+        <Text style={estilos.textao}>O que você achou da {surveyName}?</Text>
       </View>
 
       <View style={estilos.botoes}>
         <Link href={thanksRoute} asChild>
-          <TouchableOpacity style={estilos.escolha}>
+          <TouchableOpacity
+            onPress={() => handleFeedback(avaliacao[0])}
+            style={estilos.escolha}
+          >
             <Image
               style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
               source={require("@/assets/images/excelente.png")}
@@ -32,7 +56,10 @@ export default function Index() {
         </Link>
 
         <Link href={thanksRoute} asChild>
-          <TouchableOpacity style={estilos.escolha}>
+          <TouchableOpacity
+            onPress={() => handleFeedback(avaliacao[1])}
+            style={estilos.escolha}
+          >
             <Image
               style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
               source={require("@/assets/images/bom.png")}
@@ -42,7 +69,10 @@ export default function Index() {
         </Link>
 
         <Link href={thanksRoute} asChild>
-          <TouchableOpacity style={estilos.escolha}>
+          <TouchableOpacity
+            onPress={() => handleFeedback(avaliacao[2])}
+            style={estilos.escolha}
+          >
             <Image
               style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
               source={require("@/assets/images/neutro.png")}
@@ -52,7 +82,10 @@ export default function Index() {
         </Link>
 
         <Link href={thanksRoute} asChild>
-          <TouchableOpacity style={estilos.escolha}>
+          <TouchableOpacity
+            onPress={() => handleFeedback(avaliacao[3])}
+            style={estilos.escolha}
+          >
             <Image
               style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
               source={require("@/assets/images/ruim.png")}
@@ -62,7 +95,10 @@ export default function Index() {
         </Link>
 
         <Link href={thanksRoute} asChild>
-          <TouchableOpacity style={estilos.escolha}>
+          <TouchableOpacity
+            onPress={() => handleFeedback(avaliacao[4])}
+            style={estilos.escolha}
+          >
             <Image
               style={{ height: emotionImgSize[0], width: emotionImgSize[1] }}
               source={require("@/assets/images/pessimo.png")}
@@ -105,16 +141,18 @@ const estilos = StyleSheet.create({
   },
   botoes: {
     flex: 2 / 3,
-    flexDirection: "column",
-    justifyContent: "space-around",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
   },
   escolha: {
-    flexDirection: "row",
+    flexDirection: "column",
+    // justifyContent: "flex-start",
     alignItems: "center",
+    gap: 10,
     left: 30,
   },
   feedback: {
-    left: 50,
+    // left: 50,
     fontSize: 25,
     color: "white",
     fontWeight: "semibold",

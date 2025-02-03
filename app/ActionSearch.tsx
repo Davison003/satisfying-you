@@ -1,10 +1,19 @@
 //Importa
-import { useRouter } from "expo-router";
+import { useRouter, useNavigation } from "expo-router";
+import { useEffect } from "react";
 import { TouchableOpacity, View, Image, StyleSheet, Text } from "react-native";
+import { useSelector } from "react-redux";
 
 //Definição
 const ActionSearch = () => {
   const router = useRouter();
+  const nav = useNavigation();
+
+  const surveyName = useSelector((state: any) => state.survey.name);
+
+  useEffect(() => {
+    nav.setOptions({ title: `${surveyName}` });
+  }, []);
   return (
     <View style={estilo.fundo}>
       <View style={estilo.alinhamento}>
@@ -13,14 +22,13 @@ const ActionSearch = () => {
           onPress={() => {
             router.push("/ModifySearch");
           }}
-        > 
+        >
           <Image
             style={estilo.imagem}
             source={require("@/assets/images/modifica.png")}
           />
 
           <Text style={estilo.texto}>Modificar</Text>
-
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -35,7 +43,6 @@ const ActionSearch = () => {
           />
 
           <Text style={estilo.texto}>Coletar dados</Text>
-
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -50,7 +57,6 @@ const ActionSearch = () => {
           />
 
           <Text style={estilo.texto}>Relatório</Text>
-
         </TouchableOpacity>
       </View>
     </View>
@@ -70,15 +76,17 @@ const estilo = StyleSheet.create({
     padding: 20,
   },
   alinhamento: {
-    justifyContent: "space-around",
+    justifyContent: "space-between",
+    gap: 20,
     alignContent: "center",
     flex: 1,
+    flexDirection: "row",
   },
   texto: {
     fontFamily: "AveriaLibre-Regular",
     color: "#FFFFFF",
     fontSize: 24,
-    top: 8
+    top: 8,
   },
   caixa: {
     backgroundColor: "#312464",
@@ -91,7 +99,7 @@ const estilo = StyleSheet.create({
   imagem: {
     height: alt,
     width: larg,
-  }
+  },
 });
 
 //Exportação

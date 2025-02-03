@@ -1,3 +1,4 @@
+import { auth } from "@/firebase/firebaseConfig";
 import { Ionicons } from "@expo/vector-icons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Octicons from "@expo/vector-icons/Octicons";
@@ -8,19 +9,24 @@ import {
 } from "@react-navigation/drawer";
 import { DrawerActions } from "@react-navigation/native";
 import { useRouter } from "expo-router";
+import { signOut } from "firebase/auth";
 import { View } from "react-native";
+
+import { useSelector } from "react-redux";
 
 const fontSizeLabel = 20;
 
 export default function CustomDrawerContent(props: any) {
   const router = useRouter();
+  const email = useSelector((state: any) => state.login.email);
+
   return (
     <View style={{ flex: 1, backgroundColor: "#2b1d62" }}>
       <DrawerContentScrollView {...props} scrollEnabled={false}>
         {/* <DrawerItemList {...props} /> */}
         <DrawerItem
           pressColor="#ead"
-          label={"usuario@dominio.com"}
+          label={email}
           labelStyle={{
             fontFamily: "AveriaLibre-Regular",
             color: "white",
@@ -68,6 +74,7 @@ export default function CustomDrawerContent(props: any) {
               fontSize: fontSizeLabel,
             }}
             onPress={() => {
+              signOut(auth);
               router.replace("/");
               DrawerActions.closeDrawer();
             }}
