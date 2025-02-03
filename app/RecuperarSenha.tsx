@@ -22,7 +22,7 @@ const recuperarSenha = () => {
     if (emailValido) {
       const userCred = sendPasswordResetEmail(auth, email);
 
-      router.navigate("/LoginScreen");
+      router.navigate("/");
       setMensagemErro(false);
     } else {
       setMensagemErro(true);

@@ -46,7 +46,7 @@ const NewAccount = () => {
       );
 
       userCred.user
-        ? router.navigate("./LoginScreen")
+        ? router.navigate("/")
         : setMessage("Erro ao criar a conta.");
     } else {
       setMessage("Por favor, preencha todos os campos.");
